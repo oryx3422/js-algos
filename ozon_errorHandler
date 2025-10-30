@@ -1,0 +1,23 @@
+// Обработать ошибки:
+// 
+// 1. Код не 200
+// 2. Код 404 (нет данных)
+// 3. 500-599 (ошибка сервера)
+// 4. Ошибка ответа (res.error)
+// 5. Нет данных (res.data)
+
+async () => {
+    await fetch('/json')
+    .then(res => { 
+        if (res.status === 404) throw new Error('error: 404')  
+        if (res.status >= 500 && res.status <= 599) throw new Error('error: 500-599') 
+        if(!res.ok) throw new Error('error: not 200-299') 
+        return res.json()
+    })
+    .then( res => {
+        if(!res.data) throw new Error('error: no data')
+        if(res.error) throw new Error('error')
+        return res.data
+    })
+    .catch(err => error ${err}) 
+}
