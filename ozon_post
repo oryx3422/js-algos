@@ -1,0 +1,54 @@
+(async () => {
+    const promises = [
+        'posts',
+        'comments',
+        'users',
+    ].map(async (method) => (await fetch(https://jsonplaceholder.typicode.com/${method})).json())
+
+    const [
+        posts,  
+        comments,
+        users,
+    ] = await Promise.all(promises)
+
+    // Преобразование
+    const res = []
+    
+    for(let post in posts) {
+        const resultItem = {
+            id: post.id, title: post.id, userName: users.find(user => user.id === posts.userId), 
+            commentsCount: comments.filter(comment => comment.id === posts.id).length
+        } 
+        res = [ ...res, resultItem ]
+    } 
+    return res
+
+})();
+
+/
+Посты
+[{
+    "userId": 1, --
+    "id": 1,  --
+    "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit", 
+    "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+}]
+
+Комментарии
+[{
+    "postId": 1, --
+    "id": 1,
+    "name": "id labore ex et quam laborum",
+    "email": "Eliseo@gardner.biz",
+    "body": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
+}]
+
+Пользователи
+[{
+    "id": 1, --
+    "name": "Leanne Graham", 
+    "username": "Bret", 
+    "email": "Sincere@april.biz",
+    "phone": "1-770-736-8031"
+}]
+ */
