@@ -14,12 +14,14 @@
     // Преобразование
     const res = []
     
-    for(let post in posts) {
+    for(let post of posts) {
         const resultItem = {
-            id: post.id, title: post.id, userName: users.find(user => user.id === posts.userId), 
-            commentsCount: comments.filter(comment => comment.id === posts.id).length
+            id: post.id, 
+            title: post.title, 
+            userName: users.find(user => user.id === posts.userId)?.username, 
+            commentsCount: comments.filter(comment => comment.postId === posts.id).length
         } 
-        res = [ ...res, resultItem ]
+        res.push(resultItem)
     } 
     return res
 
