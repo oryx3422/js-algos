@@ -1,5 +1,5 @@
 //  arr.filter((_, i) => i % 2 === 0)
-//  arr.filter((_, i) => i !== removeIndex)
+//  arr.filter((_, i) => i !== removeIndex) 
 
 //  js
 
@@ -25,3 +25,4 @@ function filter<T>(
   })
   return res
 }
+
