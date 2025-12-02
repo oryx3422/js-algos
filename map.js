@@ -21,5 +21,3 @@ function map<T, U>(
   }
   return result
 }
-
-export default map
